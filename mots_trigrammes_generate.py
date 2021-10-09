@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Generates word from trigramm transition matrix stored in a binary file
@@ -14,9 +15,9 @@ dico = []
 with codecs.open(filepath, "r", "utf-8") as lines:
     for l in  lines:
         dico.append(l[:-1])
- 
-# Load the trigram count matrixand normalize it     
-count = np.fromfile("count2D.bin",dtype="int32").reshape(256,256,256)
+
+# Load the trigram count matrixand normalize it
+count = np.fromfile("count.bin",dtype="int32").reshape(256,256,256)
 s=count.sum(axis=2)
 st=np.tile(s.T,(256,1,1)).T
 p=count.astype('float')/st
